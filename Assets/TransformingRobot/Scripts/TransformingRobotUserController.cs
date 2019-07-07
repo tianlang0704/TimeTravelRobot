@@ -34,9 +34,10 @@ public class TransformingRobotUserController : MonoBehaviour {
 
 	
 	void FixedUpdate(){
-		float v = Input.GetAxis ("Vertical");
-		float h = Input.GetAxis ("Horizontal");
-		transformingRobotCharacter.Move (v,h);
-		
-	}
+        //float v = Input.GetAxis("Vertical");
+        float v = 0;
+        float h = Input.GetAxis("Horizontal");
+        transformingRobotCharacter.Move(v, h);
+
+    }
 }
