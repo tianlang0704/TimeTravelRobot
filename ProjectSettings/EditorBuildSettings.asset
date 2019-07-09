@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 0
+    path: Assets/TransformingRobot/Scenes/demo.unity
+    guid: 811dc2de8c536485eb4843a0921fdd93
+  - enabled: 0
+    path: Assets/SimpleTouchController/Scenes/Example1.unity
+    guid: 85d470a1871a6894888eae4395fb545f
+  - enabled: 0
+    path: Assets/SimpleTouchController/Scenes/Example2.unity
+    guid: c3cd371040bb39f41bcbc6116372b529
+  - enabled: 0
+    path: Assets/SimpleTouchController/Scenes/Example3.unity
+    guid: 120e51b729bd4bd4487d8d2108d5370e
   m_configObjects: {}

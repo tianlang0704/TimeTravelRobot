@@ -4,9 +4,11 @@ using System.Collections;
 public class TransformingRobotUserController : MonoBehaviour {
 
 	public TransformingRobotCharacter transformingRobotCharacter;
-	
-	// Use this for initialization
-	void Start () {
+
+    public SimpleTouchController movementController;
+
+    // Use this for initialization
+    void Start () {
 		transformingRobotCharacter = GetComponent<TransformingRobotCharacter> ();	
 	}
 	
@@ -36,8 +38,11 @@ public class TransformingRobotUserController : MonoBehaviour {
 	void FixedUpdate(){
         //float v = Input.GetAxis("Vertical");
         float v = 0;
-        float h = Input.GetAxis("Horizontal");
-        transformingRobotCharacter.Move(v, h);
-
+        //float h = Input.GetAxis("Horizontal");
+        float h = movementController.GetTouchPosition.x;
+        if (h != 0)
+        {
+            transformingRobotCharacter.Move(v, h);
+        }
     }
 }
