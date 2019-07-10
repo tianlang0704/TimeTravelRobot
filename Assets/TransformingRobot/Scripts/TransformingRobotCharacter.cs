@@ -10,6 +10,8 @@ public class TransformingRobotCharacter : MonoBehaviour {
 	public float planeSpeed=1f;
 	public float planeRotateSpeed=1f;
 
+    public BulletSpawner spawner;
+
 	public int robotMode=1;//0:robot,1:tank,2:plane
 
 	private Rigidbody robotRigidBody;
@@ -65,6 +67,7 @@ public class TransformingRobotCharacter : MonoBehaviour {
 
 	public void Attack(){
 		robotAnimator.SetTrigger ("Attack");
+        spawner.spawnBullet();
 	}
 
 	public void Punch(){
