@@ -6,7 +6,7 @@ public class BulletSpawner : MonoBehaviour
 { 
 
     public Bullet bullet;
-    public BulletControllerManager manager;
+    public BulletManager manager;
 
     // Start is called before the first frame update
     void Start()

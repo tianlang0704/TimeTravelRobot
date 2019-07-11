@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControllerManager : MonoBehaviour
+public class BulletManager : MonoBehaviour
 {
     public float mapLimit = 4f;
 
@@ -21,6 +21,7 @@ public class BulletControllerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 自动销毁
         for (int i = allBullets.Count - 1; i >= 0; i--)
         {
             Bullet b = allBullets[i];
@@ -28,12 +29,12 @@ public class BulletControllerManager : MonoBehaviour
                 b.transform.position.y > mapLimit ||
                 b.transform.position.z > mapLimit)
             {
-                allBullets.RemoveAt(i);
-                Destroy(b);
+                removeBullet(b);
             }
         }
     }
 
+    // 生成子弹
     public void spawnBullet(Bullet type, Vector3 position, Quaternion rotation)
     {
         Bullet bulletInst = Instantiate(type);
@@ -42,6 +43,7 @@ public class BulletControllerManager : MonoBehaviour
         bulletInst.transform.rotation = rotation;
     }
 
+    // 销毁子弹
     public void removeBullet(Bullet bulletInst)
     {
         allBullets.Remove(bulletInst);
