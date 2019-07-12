@@ -47,6 +47,6 @@ public class BulletManager : MonoBehaviour
     public void removeBullet(Bullet bulletInst)
     {
         allBullets.Remove(bulletInst);
-        Destroy(bulletInst);
+        Destroy(bulletInst.gameObject);
     }
 }

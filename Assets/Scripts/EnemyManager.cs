@@ -51,7 +51,7 @@ public class EnemyManager : MonoBehaviour
         for (int i = allEnemies.Count - 1; i >= 0; i--)
         {
             Enemy e = allEnemies[i];
-            if (e.transform.position.y < 0)
+            if (e.transform.position.y < 0.7)
             {
                 removeEnemy(e);
             }
@@ -60,7 +60,7 @@ public class EnemyManager : MonoBehaviour
     
     private void removeEnemy(Enemy e) {
         allEnemies.Remove(e);
-        Destroy(e);
+        Destroy(e.gameObject);
     }
 
     private void spawnEnemy()
