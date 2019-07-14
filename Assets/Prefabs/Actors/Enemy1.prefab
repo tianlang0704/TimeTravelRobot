@@ -29,6 +29,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.047
   m_Center: {x: 0, y: 0.045, z: 0}
+--- !u!135 &4417676865602669296
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852479615642247784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.05
+  m_Center: {x: 0, y: 0.045, z: 0}
 --- !u!114 &2026105553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,7 +64,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1528915638184230, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
       propertyPath: m_Name
-      value: robotSphere
+      value: RobotSphere Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 114253073084258262, guid: 8e0f285c21cdcf14e8d5c06c57ba936b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4431084402279646, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -108,11 +126,6 @@ PrefabInstance:
     - target: {fileID: 4431084402279646, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114253073084258262, guid: 8e0f285c21cdcf14e8d5c06c57ba936b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4745125048089396, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
       propertyPath: m_LocalRotation.x

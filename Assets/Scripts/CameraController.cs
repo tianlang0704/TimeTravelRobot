@@ -9,6 +9,16 @@ public class CameraController : MonoBehaviour
     public float cameraClostLimit = 0.5f;
     public float cameraFarLimit = 5.0f;
 
+    private void Awake() {
+        List<SimpleTouchController> controllerUIs = new List<SimpleTouchController>(FindObjectsOfType<SimpleTouchController>());
+        foreach (var controllerUI in controllerUIs)
+        {
+            if (controllerUI.name.Contains("Right")){
+                cameraController = controllerUI;
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

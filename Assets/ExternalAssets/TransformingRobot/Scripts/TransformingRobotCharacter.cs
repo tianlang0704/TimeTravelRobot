@@ -2,22 +2,18 @@
 using System.Collections;
 
 public class TransformingRobotCharacter : MonoBehaviour {
-	public Animator robotAnimator;
 	public float robotSpeed=1f;
 	public float tankSpeed=1f;
 	public float tankRotateSpeed=1f;
-
 	public float planeSpeed=1f;
 	public float planeRotateSpeed=1f;
-
-    public BulletSpawner spawner;
-
 	public int robotMode=1;//0:robot,1:tank,2:plane
 
+
+	private Animator robotAnimator;
 	private Rigidbody robotRigidBody;
     private Transform robotTransform;
-
-
+	private BulletSpawner spawner;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +21,7 @@ public class TransformingRobotCharacter : MonoBehaviour {
 		robotAnimator.speed = robotSpeed;
 		robotRigidBody = GetComponent<Rigidbody> ();
         robotTransform = GetComponent<Transform> ();
+		spawner = GetComponentInChildren<BulletSpawner>();
 	}
 
 	void Update(){

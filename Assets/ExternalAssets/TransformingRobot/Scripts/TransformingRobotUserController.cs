@@ -5,7 +5,7 @@ public class TransformingRobotUserController : MonoBehaviour {
 
 	public TransformingRobotCharacter transformingRobotCharacter;
 
-    public SimpleTouchController movementController;
+    public SimpleTouchController playerControllerUI;
 
     // Use this for initialization
     void Start () {
@@ -33,13 +33,12 @@ public class TransformingRobotUserController : MonoBehaviour {
 			transformingRobotCharacter.Hit();
 		}
 	}
-
 	
 	void FixedUpdate(){
         //float v = Input.GetAxis("Vertical");
         float v = 0;
         //float h = Input.GetAxis("Horizontal");
-        float h = movementController.GetTouchPosition.x;
+        float h = playerControllerUI.GetTouchPosition.x;
         if (h != 0)
         {
             transformingRobotCharacter.Move(v, h);

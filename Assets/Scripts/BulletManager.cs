@@ -6,11 +6,14 @@ public class BulletManager : MonoBehaviour
 {
     public float mapLimit = 4f;
 
+    private GameLogicManager gameLogicManager;
 
     // TODO: 加入子弹池
-
     private List<Bullet> allBullets = new List<Bullet>();
 
+    private void Awake() {
+        gameLogicManager = FindObjectOfType<GameLogicManager>();
+    }
 
     // Start is called before the first frame update
     void Start()

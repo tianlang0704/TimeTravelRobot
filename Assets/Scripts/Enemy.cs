@@ -8,16 +8,16 @@ public class Enemy : MonoBehaviour
 
     private Animator anim;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Use this for initialization
     void Awake()
     {
         anim = GetComponent<Animator>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame

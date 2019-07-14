@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletSpawner : MonoBehaviour
-{ 
-
+{
     public Bullet bullet;
-    public BulletManager manager;
+
+    private BulletManager bulletManager;
+
+    private void Awake() {
+        bulletManager = FindObjectOfType<BulletManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,6 @@ public class BulletSpawner : MonoBehaviour
 
     public void spawnBullet()
     {
-        manager.spawnBullet(bullet, transform.position, transform.rotation);     
+        bulletManager.spawnBullet(bullet, transform.position, transform.rotation);     
     }
 }

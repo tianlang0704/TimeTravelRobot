@@ -6,6 +6,12 @@ public class Bullet : MonoBehaviour
 {
     public float bulletSpeed = 5f;
 
+    private GameLogicManager GameLogicManager;
+
+    private void Awake() {
+        GameLogicManager = FindObjectOfType<GameLogicManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +22,10 @@ public class Bullet : MonoBehaviour
     void FixedUpdate()
     {
         transform.position += Time.deltaTime * bulletSpeed * transform.forward;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        Enemy e = other.GetComponent<Enemy>();
+        GameLogicManager.OnBulletHit(this, e);
     }
 }
