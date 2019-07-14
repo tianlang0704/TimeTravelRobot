@@ -25,7 +25,6 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Enemy e = other.GetComponent<Enemy>();
-        GameLogicManager.OnBulletHit(this, e);
+        GameLogicManager.OnBulletHit(this, other.gameObject);
     }
 }

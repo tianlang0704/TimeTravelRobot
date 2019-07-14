@@ -40,12 +40,6 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Enemy e = other.GetComponent<Enemy>();
-        if (e == null) {
-            Debug.LogError("NOT AN ENEMY!!");
-            return;
-        }
-
-        gameLogicManager.OnPlayerHit(this, e);
+        gameLogicManager.OnPlayerHit(this, other.gameObject);
     }
 }

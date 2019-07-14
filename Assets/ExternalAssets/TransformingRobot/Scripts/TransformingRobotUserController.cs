@@ -36,7 +36,7 @@ public class TransformingRobotUserController : MonoBehaviour {
 	
 	void FixedUpdate(){
         //float v = Input.GetAxis("Vertical");
-        float v = 0;
+        float v = playerControllerUI.GetTouchPosition.y;
         //float h = Input.GetAxis("Horizontal");
         float h = playerControllerUI.GetTouchPosition.x;
         if (h != 0)

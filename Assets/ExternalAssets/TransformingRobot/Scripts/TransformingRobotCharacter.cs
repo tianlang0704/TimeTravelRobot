@@ -25,7 +25,6 @@ public class TransformingRobotCharacter : MonoBehaviour {
 	}
 
 	void Update(){
-
 	}
 
 	public void RobotModeChange(int aRobotMode){
@@ -70,7 +69,7 @@ public class TransformingRobotCharacter : MonoBehaviour {
 	public void Punch(){
 		robotAnimator.SetTrigger ("Punch");
 	}
-
+ 
 	public void Hit(){
 		robotAnimator.SetTrigger ("Hit");
 	}
@@ -79,7 +78,8 @@ public class TransformingRobotCharacter : MonoBehaviour {
         robotAnimator.SetFloat("Forward", h);
         if (h != 0 && robotMode == 1) {
             robotTransform.position += h * transform.forward * Time.deltaTime * tankSpeed;
-        } else if (h > 0 && robotMode == 2) {	
+			robotTransform.position += v * -transform.right * Time.deltaTime * tankSpeed * 0.2f;
+        } else if (h != 0 && robotMode == 2) {	
 			robotRigidBody.AddForce(h * transform.forward * Time.deltaTime * planeSpeed);
 		}
 	}

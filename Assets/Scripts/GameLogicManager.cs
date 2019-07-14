@@ -26,16 +26,19 @@ public class GameLogicManager : MonoBehaviour
         
     }
 
-    public void OnBulletHit(Bullet b, Enemy e) {
+    public void OnBulletHit(Bullet b, GameObject go) {
+        Enemy e = go.GetComponent<Enemy>();
         if (e != null) {
             enemyManager.killEnemy(b.gameObject, e);
         }
         bulletManager.removeBullet(b);
     }
 
-    public void OnPlayerHit(Player p, Enemy e) {
+    public void OnPlayerHit(Player p, GameObject go) {
+        Enemy e = go.GetComponent<Enemy>();
+        if (e == null) { return; }
+
         p.gameObject.SetActive(false); //避免一帧触碰多次触发BUG
-        
         enemyManager.killEnemy(p.gameObject, e);
         playerManager.respawnPlayer(p);
     }
