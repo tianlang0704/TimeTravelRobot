@@ -323,6 +323,10 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5417912, guid: 7aa654fa27ceb4207b0b696c4504946d, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 142100, guid: 7aa654fa27ceb4207b0b696c4504946d, type: 3}
       propertyPath: m_Layer
       value: 9

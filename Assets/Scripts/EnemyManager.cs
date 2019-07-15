@@ -35,7 +35,7 @@ public class EnemyManager : MonoBehaviour
 
     private void checkAndSpawnEnemyWave()
     {
-        spawnEnemyTimer += Time.deltaTime;
+        spawnEnemyTimer += Time.unscaledDeltaTime;
         if (isSpawnEnemy && waveCount <= Mathf.Floor(spawnEnemyTimer / enemySpawnInterval))
         {
             waveCount += 1;
