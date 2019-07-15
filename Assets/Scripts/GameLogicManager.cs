@@ -103,6 +103,11 @@ public class GameLogicManager : MonoBehaviour
         GameObject expInstance = Instantiate(explosion, g.transform.position + new Vector3(0f, 0.01f, 0f), g.transform.rotation);
     }
 
+    public void OnGoalHit(Goal g, GameObject go) {
+        playerManager.exitGhostState();
+        playerManager.transformMainToPlane();
+    }
+
     private void theEnd() {
         deathPanel.SetActive(true);
     }

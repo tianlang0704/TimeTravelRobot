@@ -105,10 +105,12 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    // Ghost是否存在
     public bool isGhostExist() {
         return mainGhost != null;
     }
 
+    // 进入Ghost状态
     public void enterGhostState() {
         Ghost g = spawnGhost();
         if (g) {
@@ -116,11 +118,20 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    // 退出Ghost状态
     public void exitGhostState() {
         // 消除Ghost
         removeGhost();
 
         // 矫正时间
         timeManager.resumeAll();
+    }
+
+    // 主角变成飞机
+    public void transformMainToPlane() {
+        TransformingRobotCharacter t = mainPlayer.GetComponent<TransformingRobotCharacter>();
+        if (t = null) { return; }
+
+        t.Plane();
     }
 }
