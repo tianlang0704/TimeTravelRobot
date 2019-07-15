@@ -10,11 +10,11 @@ public class CameraController : MonoBehaviour
     public float cameraSpeed = 10f;
     public float cameraClostLimit = 0.5f;
     public float cameraFarLimit = 5.0f;
-    private SimpleTouchController cameraController;
-    private PostProcessVolume postProcessVolume;
-    private DepthOfField depthOfField;
+    protected SimpleTouchController cameraController;
+    protected PostProcessVolume postProcessVolume;
+    protected DepthOfField depthOfField;
 
-    private void Awake() {
+    protected virtual void Awake() {
         List<SimpleTouchController> controllerUIs = new List<SimpleTouchController>(FindObjectsOfType<SimpleTouchController>());
         foreach (var controllerUI in controllerUIs)
         {
@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
         postProcessVolume.profile.TryGetSettings(out depthOfField);
 
         if (savedCameraPos != Vector3.zero) {
-            transform.position = savedCameraPos;
+            transform.localPosition = savedCameraPos;
         }
     }
 
@@ -45,7 +45,7 @@ public class CameraController : MonoBehaviour
             (cameraController.GetTouchPosition.y < 0 && transform.localPosition.x <= cameraFarLimit && transform.localPosition.y <= cameraFarLimit && transform.localPosition.z <= cameraFarLimit)))
         {
             transform.position += cameraController.GetTouchPosition.y * transform.forward * Time.unscaledDeltaTime * cameraSpeed;
-            savedCameraPos = transform.position;
+            savedCameraPos = transform.localPosition;
             depthOfField.focalLength.value = 1.526941f / transform.localPosition.magnitude * 24;
         }
     }

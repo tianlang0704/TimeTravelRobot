@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     // 生成一个幽灵
-    public  Ghost spawnGhost() {
+    private  Ghost spawnGhost() {
         if (mainGhost != null) { return null; }
 
         GameObject spawnPoint = mainPlayer?.gameObject;
