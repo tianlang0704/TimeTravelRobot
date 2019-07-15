@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Player : TimeScaledGO
 {
-    private GameLogicManager gameLogicManager;
-    private TransformingRobotCharacter character;
-    private TransformingRobotUserController userController;
-    private CameraController cameraController;
-    private BulletSpawner bulletSpawner;
+    protected GameLogicManager gameLogicManager;
+    protected TransformingRobotCharacter character;
+    protected TransformingRobotUserController userController;
+    protected CameraController cameraController;
+    protected BulletSpawner bulletSpawner;
 
     override protected void Awake() {
         base.Awake();

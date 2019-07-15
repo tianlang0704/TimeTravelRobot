@@ -15,9 +15,11 @@ public class EnemyManager : MonoBehaviour
     private int waveCount = 0;
     private List<Enemy> allEnemies = new List<Enemy>();
     private GameLogicManager gameLogicManager;
+    private TimeManager timeManager;
 
     private void Awake() {
         gameLogicManager = FindObjectOfType<GameLogicManager>();
+        timeManager = FindObjectOfType<TimeManager>();
     }
 
     // Start is called before the first frame update
@@ -71,15 +73,19 @@ public class EnemyManager : MonoBehaviour
 
     private void spawnEnemy()
     {
+        // 随机出生点
         int spawnPointCount = spawnPoints.Count;
         if (spawnPointCount == 0) { return; }
-
         int randomSpownIdx = Random.Range(0, spawnPointCount - 1);
         GameObject spawnPoint = spawnPoints[randomSpownIdx];
         if (spawnPoint == null) { return; }
 
+        // 实例化敌人
         Enemy e = Instantiate(enemyCharacterPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         allEnemies.Add(e);
+
+        // 设置时间影响
+        // e.isAffectedByTimeScale = timeManager.isAllSlowDown;
     }
 
     // 元素交互

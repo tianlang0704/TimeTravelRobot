@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class BulletSpawner : MonoBehaviour
 {
-    public enum BulletType
-    {
-        Main = 1,
-        Second = 2
-    }
-
     public Bullet bullet;
     public Bullet secondBullet;
 
@@ -31,11 +25,11 @@ public class BulletSpawner : MonoBehaviour
 
     }
 
-    public void spawnBullet(BulletType type = BulletType.Main)
+    public void spawnBullet(SkillManager.SkillType type = SkillManager.SkillType.Main)
     {
-        if (type == BulletType.Main) {
+        if (type == SkillManager.SkillType.Main) {
             bulletManager.spawnBullet(bullet, transform.position, transform.rotation);     
-        }else if (type == BulletType.Second){
+        }else if (type == SkillManager.SkillType.Second){
             bulletManager.spawnBullet(secondBullet, transform.position, transform.rotation);
         }
     }

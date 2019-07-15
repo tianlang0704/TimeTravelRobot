@@ -5,8 +5,12 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     public float slowDownTimeScale = 0.1f;
-
+    public bool isAllSlowDown = false;
     private List<TimeScaledGO> tgoList = new List<TimeScaledGO>();
+
+    private void Awake() {
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +21,7 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S)) {
-            if (Time.timeScale == slowDownTimeScale) {
-                slowDownAllButOne();
-            }else{
-                resumeAll();
-            }
-		}
+
     }
 
     public void slowDownOne(TimeScaledGO tgo) {
@@ -39,6 +37,7 @@ public class TimeManager : MonoBehaviour
     }
 
     public void slowDownAllButOne(TimeScaledGO tgo = null) {
+        slowDownTime();
         foreach (var one in tgoList)
         {
             if (tgo && one == tgo) {
@@ -47,6 +46,7 @@ public class TimeManager : MonoBehaviour
                 one.isAffectedByTimeScale = true;
             }
         }
+        isAllSlowDown = true;
     }
 
     public void resumeAll() {
@@ -55,25 +55,31 @@ public class TimeManager : MonoBehaviour
             one.isAffectedByTimeScale = false;
         }
         resumeTime();
+        isAllSlowDown = false;
     }
 
-    public void slowDownTime() {
+    private void slowDownTime() {
         if (Time.timeScale != slowDownTimeScale) {
             Time.fixedDeltaTime *= slowDownTimeScale;
         }
         Time.timeScale = slowDownTimeScale;
     }
 
-    public void resumeTime() {
+    private void resumeTime() {
         if (Time.timeScale != 1) {
             Time.fixedDeltaTime /= slowDownTimeScale;
         }
         Time.timeScale = 1;
-        // Time.fixedDeltaTime *= slowDownTimeScale;
     }
 
     public void registerGO(TimeScaledGO tgo) {
         tgoList.Add(tgo);
+
+        // 设置除了Ghost之外的慢动作
+        Ghost g = tgo.GetComponent<Ghost>();
+        if (g == null) {
+            tgo.isAffectedByTimeScale = isAllSlowDown;
+        }
     }
 
     public void unregisterGO(TimeScaledGO tgo) {

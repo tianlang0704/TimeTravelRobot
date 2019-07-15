@@ -44,7 +44,7 @@ public class CameraController : MonoBehaviour
             ((cameraController.GetTouchPosition.y > 0 && transform.localPosition.x >= cameraClostLimit && transform.localPosition.y >= cameraClostLimit && transform.localPosition.z >= cameraClostLimit) ||
             (cameraController.GetTouchPosition.y < 0 && transform.localPosition.x <= cameraFarLimit && transform.localPosition.y <= cameraFarLimit && transform.localPosition.z <= cameraFarLimit)))
         {
-            transform.position += cameraController.GetTouchPosition.y * transform.forward * Time.deltaTime * cameraSpeed;
+            transform.position += cameraController.GetTouchPosition.y * transform.forward * Time.unscaledDeltaTime * cameraSpeed;
             savedCameraPos = transform.position;
             depthOfField.focalLength.value = 1.526941f / transform.localPosition.magnitude * 24;
         }

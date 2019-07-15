@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class TransformingRobotUserController : MonoBehaviour {
-
 	private TransformingRobotCharacter transformingRobotCharacter;
     private SimpleTouchController playerControllerUI;
 	private MainShootButton mainShootButton;
 	private SecondShootButton secondShootButton;
+	private SSSButton sssButton;
+	private SkillManager skillManager;
 
 	private void Awake() {
 		List<SimpleTouchController> controllerUIs = new List<SimpleTouchController>(FindObjectsOfType<SimpleTouchController>());
@@ -22,6 +23,8 @@ public class TransformingRobotUserController : MonoBehaviour {
 		transformingRobotCharacter = GetComponent<TransformingRobotCharacter> ();
 		mainShootButton = FindObjectOfType<MainShootButton>();
 		secondShootButton = FindObjectOfType<SecondShootButton>();
+		sssButton = FindObjectOfType<SSSButton>();
+		skillManager = FindObjectOfType<SkillManager>();
 	}
 
     // Use this for initialization
@@ -37,27 +40,24 @@ public class TransformingRobotUserController : MonoBehaviour {
 			transformingRobotCharacter.Tank();
 		}	
 
-		// if (Input.GetButtonDown ("Fire1")) {
-		// 	transformingRobotCharacter.Attack();
-		// }
-		if (mainShootButton.isShoot) {
-			transformingRobotCharacter.Attack(BulletSpawner.BulletType.Main);
-		}else if (secondShootButton.isShoot) {
-			transformingRobotCharacter.Attack(BulletSpawner.BulletType.Second);
+		if (mainShootButton.isShoot || Input.GetKeyDown(KeyCode.J)) {
+			transformingRobotCharacter.Attack(SkillManager.SkillType.Main);
+		}else if (secondShootButton.isShoot|| Input.GetKeyDown(KeyCode.K)) {
+			transformingRobotCharacter.Attack(SkillManager.SkillType.Second);
+		}else if (sssButton.isShoot || Input.GetKeyDown(KeyCode.L)) {
+			skillManager.SSS();
 		}
 		
-		if (Input.GetButtonDown ("Fire2")) {
-			transformingRobotCharacter.Punch();
-		}
+		// if (Input.GetButtonDown ("Fire2")) {
+		// 	transformingRobotCharacter.Punch();
+		// }
 
-		if (Input.GetKeyDown(KeyCode.H)) {
-			transformingRobotCharacter.Hit();
-		}
+		// if (Input.GetKeyDown(KeyCode.H)) {
+		// 	transformingRobotCharacter.Hit();
+		// }
 
-		//float v = Input.GetAxis("Vertical");
-        float v = playerControllerUI.GetTouchPosition.y;
-        //float h = Input.GetAxis("Horizontal");
-        float h = playerControllerUI.GetTouchPosition.x;
+        float v = playerControllerUI.GetTouchPosition.y + Input.GetAxis("Vertical");
+        float h = playerControllerUI.GetTouchPosition.x + Input.GetAxis("Horizontal");
         if (h != 0 || v != 0) {
             transformingRobotCharacter.Move(v, h);
         }

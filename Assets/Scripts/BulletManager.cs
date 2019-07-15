@@ -18,7 +18,12 @@ public class BulletManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        string strGradleFolder;
+        #if UNITY_EDITOR_WIN
+        strGradleFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\..\\.gradle";
+        #elif UNITY_EDITOR_OSX
+        strGradleFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "/.gradle";
+        #endif
     }
 
     // Update is called once per frame
