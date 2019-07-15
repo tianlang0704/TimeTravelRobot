@@ -1,15 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TransformingRobotUserController : MonoBehaviour {
 
-	public TransformingRobotCharacter transformingRobotCharacter;
+	private TransformingRobotCharacter transformingRobotCharacter;
+    private SimpleTouchController playerControllerUI;
+	private MainShootButton mainShootButton;
+	private SecondShootButton secondShootButton;
 
-    public SimpleTouchController playerControllerUI;
+	private void Awake() {
+		List<SimpleTouchController> controllerUIs = new List<SimpleTouchController>(FindObjectsOfType<SimpleTouchController>());
+        foreach (var controllerUI in controllerUIs)
+        {
+            if (controllerUI.name.Contains("Left")){
+                playerControllerUI = controllerUI;
+				break;
+            }
+        }
+
+		transformingRobotCharacter = GetComponent<TransformingRobotCharacter> ();
+		mainShootButton = FindObjectOfType<MainShootButton>();
+		secondShootButton = FindObjectOfType<SecondShootButton>();
+	}
 
     // Use this for initialization
     void Start () {
-		transformingRobotCharacter = GetComponent<TransformingRobotCharacter> ();	
 	}
 	
 	void Update(){
@@ -21,8 +37,13 @@ public class TransformingRobotUserController : MonoBehaviour {
 			transformingRobotCharacter.Tank();
 		}	
 
-		if (Input.GetButtonDown ("Fire1")) {
-			transformingRobotCharacter.Attack();
+		// if (Input.GetButtonDown ("Fire1")) {
+		// 	transformingRobotCharacter.Attack();
+		// }
+		if (mainShootButton.isShoot) {
+			transformingRobotCharacter.Attack(BulletSpawner.BulletType.Main);
+		}else if (secondShootButton.isShoot) {
+			transformingRobotCharacter.Attack(BulletSpawner.BulletType.Second);
 		}
 		
 		if (Input.GetButtonDown ("Fire2")) {

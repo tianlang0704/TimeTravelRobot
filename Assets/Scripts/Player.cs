@@ -17,15 +17,6 @@ public class Player : TimeScaledGO
         userController = GetComponent<TransformingRobotUserController>();
         cameraController = GetComponentInChildren<CameraController>();
         bulletSpawner = GetComponentInChildren<BulletSpawner>();
-
-        List<SimpleTouchController> controllerUIList = new List<SimpleTouchController>(FindObjectsOfType<SimpleTouchController>());
-        foreach (var controller in controllerUIList) {
-            if (controller.gameObject.name.Contains("Left")) {
-                userController.playerControllerUI = controller;
-            }else if (controller.gameObject.name.Contains("Right")) {
-                cameraController.cameraController = controller;
-            }
-        }
     }
 
     // Start is called before the first frame update

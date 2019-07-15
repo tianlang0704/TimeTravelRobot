@@ -7,10 +7,10 @@ public class CameraController : MonoBehaviour
 {
     static Vector3 savedCameraPos = Vector3.zero;
 
-    public SimpleTouchController cameraController;
     public float cameraSpeed = 10f;
     public float cameraClostLimit = 0.5f;
     public float cameraFarLimit = 5.0f;
+    private SimpleTouchController cameraController;
     private PostProcessVolume postProcessVolume;
     private DepthOfField depthOfField;
 

@@ -27,6 +27,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeSlowBullet
       objectReference: {fileID: 0}
+    - target: {fileID: 8365856128386868632, guid: 8474485d963192247a07695ca09987b2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 07e7579620ac4f842ad858ec4463dd0c, type: 2}
     - target: {fileID: 8365856128386868634, guid: 8474485d963192247a07695ca09987b2,
         type: 3}
       propertyPath: m_LocalPosition.x

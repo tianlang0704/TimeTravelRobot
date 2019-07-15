@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3796e0432587004fb3a4b45ade44b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: -8356664913794736263, guid: 9b40f16fe6ee3b94c82251a0e3a5ce15, type: 3}
+  bullet: {fileID: 8365856128386868638, guid: 8474485d963192247a07695ca09987b2, type: 3}
+  secondBullet: {fileID: -8356664913794736263, guid: 9b40f16fe6ee3b94c82251a0e3a5ce15,
+    type: 3}
 --- !u!1 &427167469
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3fc425ca8bcac41a95ad3eab2c79dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraController: {fileID: 0}
   cameraSpeed: 0.2
   cameraClostLimit: 0.5
   cameraFarLimit: 5

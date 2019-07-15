@@ -8,12 +8,14 @@ public class TransformingRobotCharacter : MonoBehaviour {
 	public float planeSpeed=1f;
 	public float planeRotateSpeed=1f;
 	public int robotMode=1;//0:robot,1:tank,2:plane
+	public float attackInterval = 0.4f;
 
 
 	private Animator robotAnimator;
 	private Rigidbody robotRigidBody;
     private Transform robotTransform;
 	private BulletSpawner spawner;
+	private float lastAttackTime = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -61,9 +63,12 @@ public class TransformingRobotCharacter : MonoBehaviour {
 		robotAnimator.SetTrigger ("Plane");
 	}
 
-	public void Attack(){
+	public void Attack(BulletSpawner.BulletType bulletType){
+		if (Time.unscaledTime < lastAttackTime + attackInterval) { return; }
+		lastAttackTime = Time.unscaledTime;
+
 		robotAnimator.SetTrigger ("Attack");
-        spawner.spawnBullet();
+        spawner.spawnBullet(bulletType);
 	}
 
 	public void Punch(){

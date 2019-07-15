@@ -19,14 +19,15 @@ public class TimeManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S)) {
             if (Time.timeScale == slowDownTimeScale) {
-                resumeTime();
+                slowDownAllButOne();
             }else{
-                slowDownTime();
+                resumeAll();
             }
 		}
     }
 
     public void slowDownOne(TimeScaledGO tgo) {
+        slowDownTime();
         foreach (var one in tgoList)
         {
             if (one != tgo) {
@@ -35,15 +36,38 @@ public class TimeManager : MonoBehaviour
                 one.isAffectedByTimeScale = true;
             }
         }
-        slowDownTime();
+    }
+
+    public void slowDownAllButOne(TimeScaledGO tgo = null) {
+        foreach (var one in tgoList)
+        {
+            if (tgo && one == tgo) {
+                one.isAffectedByTimeScale = false;
+            }else{
+                one.isAffectedByTimeScale = true;
+            }
+        }
+    }
+
+    public void resumeAll() {
+        foreach (var one in tgoList)
+        {
+            one.isAffectedByTimeScale = false;
+        }
+        resumeTime();
     }
 
     public void slowDownTime() {
+        if (Time.timeScale != slowDownTimeScale) {
+            Time.fixedDeltaTime *= slowDownTimeScale;
+        }
         Time.timeScale = slowDownTimeScale;
-        // Time.fixedDeltaTime /= slowDownTimeScale;
     }
 
     public void resumeTime() {
+        if (Time.timeScale != 1) {
+            Time.fixedDeltaTime /= slowDownTimeScale;
+        }
         Time.timeScale = 1;
         // Time.fixedDeltaTime *= slowDownTimeScale;
     }
