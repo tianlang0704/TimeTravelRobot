@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameLogicManager : MonoBehaviour
 {
-    int counter = 0;    
+    public GameObject explosion;
+    public int maxHp = 10;
+    private int hp = 0;
     private PlayerManager playerManager;
     private BulletManager bulletManager;
     private EnemyManager enemyManager;
@@ -27,6 +29,14 @@ public class GameLogicManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnExplosionHit(Explosion exp, GameObject go) {
+        Enemy e = go.GetComponent<Enemy>();
+        if (e == null) { return; }
+
+        go.SetActive(false);
+        enemyManager.killEnemy(exp.gameObject, e);
     }
 
     public void OnBulletHit(Bullet b, GameObject go) {
@@ -60,6 +70,10 @@ public class GameLogicManager : MonoBehaviour
         playerManager.removeGhost();
 
         // 算分
+        hp -= 1;
+        if (hp <= 0) {
+            theEnd();
+        }
     }
 
     public void OnGhostHit(Ghost g, GameObject go) {
@@ -72,5 +86,12 @@ public class GameLogicManager : MonoBehaviour
 
         // 退出Ghost状态
         playerManager.exitGhostState();
+
+        // 爆炸
+        GameObject expInstance = Instantiate(explosion, g.transform.position + new Vector3(0f, 0.01f, 0f), g.transform.rotation);
+    }
+
+    private void theEnd() {
+
     }
 }
