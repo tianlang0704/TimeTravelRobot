@@ -75,10 +75,20 @@ public class TransformingRobotCharacter : MonoBehaviour {
 	}
 
 	public void Move(float v,float h){
-        robotAnimator.SetFloat("Forward", h);
+		TimeScaledGO tgo = GetComponent<TimeScaledGO>();
+		float deltaTime;
+		float timeScale;
+		if (tgo != null) {
+			deltaTime = tgo.getDeltaTime();
+			timeScale = tgo.getTimeScale();
+		}else{
+			deltaTime = Time.deltaTime;
+			timeScale = Time.timeScale;
+		}
+        robotAnimator.SetFloat("Forward", h * timeScale);
         if (h != 0 && robotMode == 1) {
-            robotTransform.position += h * transform.forward * Time.deltaTime * tankSpeed;
-			robotTransform.position += v * -transform.right * Time.deltaTime * tankSpeed * 0.2f;
+			robotTransform.position += h * transform.forward * deltaTime * tankSpeed;
+			robotTransform.position += v * -transform.right * deltaTime * tankSpeed * 0.2f;
         } else if (h != 0 && robotMode == 2) {	
 			robotRigidBody.AddForce(h * transform.forward * Time.deltaTime * planeSpeed);
 		}

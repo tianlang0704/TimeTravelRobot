@@ -13,9 +13,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!135 &2026105557
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -54,6 +54,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9de5a593b22b8549b7c7dac0f08d562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScale: 1
+  isAffectedByTimeScaleInternal: 0
   speed: 0.05
 --- !u!1001 &851729243390823246
 PrefabInstance:

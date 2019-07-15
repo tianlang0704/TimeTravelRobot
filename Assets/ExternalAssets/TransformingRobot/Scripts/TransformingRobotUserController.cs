@@ -32,16 +32,17 @@ public class TransformingRobotUserController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.H)) {
 			transformingRobotCharacter.Hit();
 		}
-	}
-	
-	void FixedUpdate(){
-        //float v = Input.GetAxis("Vertical");
+
+		//float v = Input.GetAxis("Vertical");
         float v = playerControllerUI.GetTouchPosition.y;
         //float h = Input.GetAxis("Horizontal");
         float h = playerControllerUI.GetTouchPosition.x;
-        if (h != 0)
-        {
+        if (h != 0 || v != 0) {
             transformingRobotCharacter.Move(v, h);
         }
+	}
+	
+	void FixedUpdate(){
+
     }
 }

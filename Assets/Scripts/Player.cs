@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : TimeScaledGO
 {
     private GameLogicManager gameLogicManager;
     private TransformingRobotCharacter character;
@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     private CameraController cameraController;
     private BulletSpawner bulletSpawner;
 
-    private void Awake() {
+    override protected void Awake() {
+        base.Awake();
         gameLogicManager = FindObjectOfType<GameLogicManager>();
         character = GetComponent<TransformingRobotCharacter>();
         userController = GetComponent<TransformingRobotUserController>();
@@ -28,9 +29,9 @@ public class Player : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame

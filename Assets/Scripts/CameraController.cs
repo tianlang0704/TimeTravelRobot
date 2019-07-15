@@ -40,7 +40,6 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log("testtesttest, " + transform.localPosition.magnitude);
         if  (cameraController.GetTouchPosition.y != 0 &&
             ((cameraController.GetTouchPosition.y > 0 && transform.localPosition.x >= cameraClostLimit && transform.localPosition.y >= cameraClostLimit && transform.localPosition.z >= cameraClostLimit) ||
             (cameraController.GetTouchPosition.y < 0 && transform.localPosition.x <= cameraFarLimit && transform.localPosition.y <= cameraFarLimit && transform.localPosition.z <= cameraFarLimit)))

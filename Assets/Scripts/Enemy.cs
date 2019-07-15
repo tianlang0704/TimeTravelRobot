@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : TimeScaledGO
 {
     public float speed = 0.05f;
 
     private Animator anim;
 
     // Use this for initialization
-    void Awake()
+    override protected void Awake()
     {
+        base.Awake();
         anim = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame
@@ -38,7 +39,15 @@ public class Enemy : MonoBehaviour
             anim.SetBool("Walk_Anim", false);
         }
 
-        transform.position += transform.forward * nowSpeed * Time.deltaTime;
+        float deltaTime;
+        TimeScaledGO tgo = GetComponent<TimeScaledGO>();
+        if (tgo != null) {
+            deltaTime = tgo.getDeltaTime();
+        }else{
+            deltaTime = Time.deltaTime;
+        }
+
+        transform.position += transform.forward * nowSpeed * deltaTime;
         transform.rotation = getRotation();
     }
 

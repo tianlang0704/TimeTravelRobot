@@ -7,11 +7,13 @@ public class GameLogicManager : MonoBehaviour
     int counter = 0;    private PlayerManager playerManager;
     private BulletManager bulletManager;
     private EnemyManager enemyManager;
+    private TimeManager timeManager;
 
     private void Awake() {
         bulletManager = FindObjectOfType<BulletManager>();
         enemyManager = FindObjectOfType<EnemyManager>();
         playerManager = FindObjectOfType<PlayerManager>();
+        timeManager = FindObjectOfType<TimeManager>();
     }
 
     // Start is called before the first frame update
@@ -29,9 +31,17 @@ public class GameLogicManager : MonoBehaviour
     public void OnBulletHit(Bullet b, GameObject go) {
         Enemy e = go.GetComponent<Enemy>();
         if (e != null) {
-            enemyManager.killEnemy(b.gameObject, e);
+            if (b.getBulletType() == Bullet.BulletType.Base) {
+                enemyManager.killEnemy(b.gameObject, e);
+            }else if (b.getBulletType() == Bullet.BulletType.TimeSlow) {
+                timeManager.slowDownOne(e);
+            }
         }
-        bulletManager.removeBullet(b);
+
+        Bullet b2 = go.GetComponent<Bullet>();
+        if (b2 == null) {
+            bulletManager.removeBullet(b);
+        }
     }
 
     public void OnPlayerHit(Player p, GameObject go) {

@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3796e0432587004fb3a4b45ade44b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8365856128386868638, guid: 8474485d963192247a07695ca09987b2, type: 3}
+  bullet: {fileID: -8356664913794736263, guid: 9b40f16fe6ee3b94c82251a0e3a5ce15, type: 3}
 --- !u!1 &427167469
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c675c720b02582458d87f88d0c7d68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScale: 1
+  isAffectedByTimeScaleInternal: 0
 --- !u!1001 &1514721441589104637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -311,6 +313,14 @@ PrefabInstance:
     - target: {fileID: 488914, guid: 7aa654fa27ceb4207b0b696c4504946d, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.070000045
+      objectReference: {fileID: 0}
+    - target: {fileID: 5417912, guid: 7aa654fa27ceb4207b0b696c4504946d, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5417912, guid: 7aa654fa27ceb4207b0b696c4504946d, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 142100, guid: 7aa654fa27ceb4207b0b696c4504946d, type: 3}
       propertyPath: m_Layer
