@@ -83,9 +83,6 @@ public class EnemyManager : MonoBehaviour
         // 实例化敌人
         Enemy e = Instantiate(enemyCharacterPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         allEnemies.Add(e);
-
-        // 设置时间影响
-        // e.isAffectedByTimeScale = timeManager.isAllSlowDown;
     }
 
     // 元素交互

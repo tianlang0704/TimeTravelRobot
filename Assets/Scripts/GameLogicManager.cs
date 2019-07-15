@@ -21,6 +21,7 @@ public class GameLogicManager : MonoBehaviour
     private BulletManager bulletManager;
     private EnemyManager enemyManager;
     private TimeManager timeManager;
+    private bool isWon = false;
 
     private void Awake() {
         bulletManager = FindObjectOfType<BulletManager>();
@@ -104,8 +105,12 @@ public class GameLogicManager : MonoBehaviour
     }
 
     public void OnGoalHit(Goal g, GameObject go) {
+        if (isWon) { return; }
+        Player p = go.GetComponent<Player>();
+        if (p == null) { return; }
+
         playerManager.exitGhostState();
-        playerManager.transformMainToPlane();
+        playerManager.transformMainToWinState();
     }
 
     private void theEnd() {

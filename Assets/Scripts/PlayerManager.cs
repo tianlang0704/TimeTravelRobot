@@ -128,10 +128,12 @@ public class PlayerManager : MonoBehaviour
     }
 
     // 主角变成飞机
-    public void transformMainToPlane() {
+    public void transformMainToWinState() {
+        if (mainPlayer == null) { return; }
         TransformingRobotCharacter t = mainPlayer.GetComponent<TransformingRobotCharacter>();
-        if (t = null) { return; }
-
+        if (t == null) { return; }
         t.Plane();
+
+        mainPlayer.setShowFirework(true);
     }
 }

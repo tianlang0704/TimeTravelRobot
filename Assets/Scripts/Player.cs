@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : TimeScaledGO
 {
+    public GameObject firework;
     protected GameLogicManager gameLogicManager;
     protected TransformingRobotCharacter character;
     protected TransformingRobotUserController userController;
@@ -33,5 +34,9 @@ public class Player : TimeScaledGO
 
     private void OnTriggerEnter(Collider other) {
         gameLogicManager.OnPlayerHit(this, other.gameObject);
+    }
+
+    public void setShowFirework(bool b) {
+        firework.SetActive(b);
     }
 }
