@@ -1,12 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameLogicManager : MonoBehaviour
 {
+    public GameObject deathPanel;
+    public Text hpText;
     public GameObject explosion;
     public int maxHp = 10;
-    private int hp = 0;
+    private int hpInternal;
+    private int hp {
+        get { return hpInternal; }
+        set {
+            hpInternal = value;
+            hpText.text = "HP " + hpInternal.ToString();
+        }
+    }
     private PlayerManager playerManager;
     private BulletManager bulletManager;
     private EnemyManager enemyManager;
@@ -22,7 +32,8 @@ public class GameLogicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        hp = maxHp;
+        hpText.text = "HP " + maxHp.ToString();
     }
 
     // Update is called once per frame
@@ -70,8 +81,9 @@ public class GameLogicManager : MonoBehaviour
         playerManager.removeGhost();
 
         // 算分
-        hp -= 1;
-        if (hp <= 0) {
+        if (hp > 1) {
+            hp -= 1;
+        }else{
             theEnd();
         }
     }
@@ -92,6 +104,6 @@ public class GameLogicManager : MonoBehaviour
     }
 
     private void theEnd() {
-
+        deathPanel.SetActive(true);
     }
 }
