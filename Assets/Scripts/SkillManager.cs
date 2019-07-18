@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// 技能/CD管理器
 public class SkillManager : MonoBehaviour
 {
+    // 技能类别
     public enum SkillType
     {
         SSS = 0,
@@ -12,11 +14,13 @@ public class SkillManager : MonoBehaviour
         Second = 2
     }
 
+    // CD信息类
     [System.Serializable] public class CDInfo {
         public float cd;
         public float timeStamp;
     }
     
+    // CD信息列表, 按技能类别配置, 只配置CD
     public List<CDInfo> cdInfoList = new List<CDInfo>();
 
     private float sssTimestamp = -1f;
@@ -56,6 +60,7 @@ public class SkillManager : MonoBehaviour
     private void updateSkillButtonText() {
         float timeNow = Time.unscaledTime;
         
+        // 更新主武器按键文字和CD
         CDInfo mainCDInfo = cdInfoList[(int)SkillType.Main];
         float mainCD = mainCDInfo.timeStamp + mainCDInfo.cd - timeNow;
         if (mainCD > 0) {
@@ -64,6 +69,7 @@ public class SkillManager : MonoBehaviour
             mainBtnText.text = "M";
         }
 
+        // 更新副武器按键文字和CD
         CDInfo secondCDInfo = cdInfoList[(int)SkillType.Second];
         float secondCD = secondCDInfo.timeStamp + secondCDInfo.cd - timeNow;
         if (secondCD > 0) {
@@ -72,6 +78,7 @@ public class SkillManager : MonoBehaviour
             secondBtnText.text = "S";
         }
 
+        // 更新SSS武器按键和文字CD
         CDInfo sssCDInfo = cdInfoList[(int)SkillType.SSS];
         float sssCD = sssCDInfo.timeStamp + sssCDInfo.cd - timeNow;
         if (sssCD > 0) {
@@ -81,15 +88,18 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    // 记录武器使用时间戳
     public void stamp(SkillManager.SkillType bulletType) {
         cdInfoList[(int)bulletType].timeStamp = Time.unscaledTime;
     }
 
+    // 获取是否武器已可以再次使用
     public bool isReady(SkillManager.SkillType bulletType) {
         CDInfo cdInfo = cdInfoList[(int)bulletType];
         return Time.unscaledTime - cdInfo.timeStamp > cdInfo.cd;
     }
 
+    // 使用SSS武器
     public void SSS() {
         if (Time.unscaledTime - sssTimestamp < 1f) { return; }
         sssTimestamp = Time.unscaledTime;

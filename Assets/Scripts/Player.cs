@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 玩家统合管理器
 public class Player : TimeScaledGO
 {
+    // 公有
+    // 胜利火花prefab
     public GameObject firework;
+
+    // 私有
     protected GameLogicManager gameLogicManager;
     protected TransformingRobotCharacter character;
     protected TransformingRobotUserController userController;
@@ -32,10 +37,12 @@ public class Player : TimeScaledGO
         
     }
 
+    // 玩家碰撞逻辑
     private void OnTriggerEnter(Collider other) {
         gameLogicManager.OnPlayerHit(this, other.gameObject);
     }
 
+    // 设置展示火花
     public void setShowFirework(bool b) {
         firework.SetActive(b);
     }

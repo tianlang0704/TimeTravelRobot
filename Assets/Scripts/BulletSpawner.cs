@@ -25,6 +25,7 @@ public class BulletSpawner : MonoBehaviour
 
     }
 
+    // 根据武器类型生成子弹, 角色控制器调用这里
     public void spawnBullet(SkillManager.SkillType type = SkillManager.SkillType.Main)
     {
         if (type == SkillManager.SkillType.Main) {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 目标管理器
 public class Goal : MonoBehaviour
 {
     private GameLogicManager glm;
@@ -20,6 +21,7 @@ public class Goal : MonoBehaviour
         
     }
 
+    // 目标碰撞逻辑
     private void OnTriggerEnter(Collider other) {
         glm.OnGoalHit(this, other.gameObject);
     }

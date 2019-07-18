@@ -9,6 +9,7 @@ public class GameLogicManager : MonoBehaviour
     public Text hpText;
     public GameObject explosion;
     public int maxHp = 10;
+    
     private int hpInternal;
     private int hp {
         get { return hpInternal; }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 爆炸管理器
 public class Explosion : MonoBehaviour
 {
     private GameLogicManager glm;

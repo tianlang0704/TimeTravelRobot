@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 可减速物件控制器
 public class TimeScaledGO : MonoBehaviour
 {
+    // 物件的现在时间规格
     public float timeScale = 1f;
     public bool isAffectedByTimeScale {
         set {
@@ -39,6 +41,7 @@ public class TimeScaledGO : MonoBehaviour
         
     }
 
+    //设置是否受时间控制器设置的时间影响
     public void setAnimationAffectedByTimeScale(bool b) {
         Animator animator = GetComponent<Animator>();
         if (animator == null) { return; }
@@ -50,6 +53,7 @@ public class TimeScaledGO : MonoBehaviour
         }
     }
 
+    // 获取用来做计算的时间倍数
     public float getTimeScale() {
         if (isAffectedByTimeScale) {
             return Time.timeScale * timeScale;
@@ -58,10 +62,12 @@ public class TimeScaledGO : MonoBehaviour
         }
     }
 
+    // 获取用来计算的DT
     public float getDeltaTime() {
         return Time.deltaTime * getTimeScale();
     }
 
+    // 获取用来计算的FDT
     public float getFixedDeltaTime() {
         return Time.fixedDeltaTime * getTimeScale();
     }

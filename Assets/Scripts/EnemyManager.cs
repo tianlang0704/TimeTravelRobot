@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 敌人生成和销毁管理器
 public class EnemyManager : MonoBehaviour
 {
     // 公共
@@ -31,10 +32,14 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 检查时间并生成敌人
         checkAndSpawnEnemyWave();
+
+        // 检查敌人位置并自动销毁超出位置限制的个体
         checkEnemyPositionLimit();
     }
 
+    // 检查时间并生成敌人
     private void checkAndSpawnEnemyWave()
     {
         spawnEnemyTimer += Time.unscaledDeltaTime;
@@ -45,14 +50,17 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    // 设置是否生成敌人
     public void setToSpawningEnemy(bool b)
     {
+        // 如果为是, 清除生成时间计数
         if (b) {
             spawnEnemyTimer = 0f;
         }
         isSpawnEnemy = b;
     }
 
+    // 检查敌人位置并自动销毁超出位置限制的个体
     private void checkEnemyPositionLimit()
     {
         // 自动销毁
@@ -66,11 +74,13 @@ public class EnemyManager : MonoBehaviour
         }
     }
     
+    // 消除敌人, 所有接口经过这里
     private void removeEnemy(Enemy e) {
         allEnemies.Remove(e);
         Destroy(e.gameObject);
     }
 
+    // 生成敌人, 所有接口经过这里
     private void spawnEnemy()
     {
         // 随机出生点

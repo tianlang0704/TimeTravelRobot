@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 玩家生成管理器
 public class PlayerManager : MonoBehaviour
 {
+    // 公有
     public List<GameObject> spawnPoints = new List<GameObject>();
     public Player playerPrefab;
     public Ghost ghostPrefab;
 
+    // 私有
     private Player mainPlayer;
     private Ghost mainGhost;
     private List<Player> ghosts = new List<Player>();

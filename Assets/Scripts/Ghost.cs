@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 幽灵管理器
 public class Ghost : Player
 {
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class Ghost : Player
         
     }
 
+    // 重载碰撞逻辑
     private void OnTriggerEnter(Collider other) {
         gameLogicManager.OnGhostHit(this, other.gameObject);
     }

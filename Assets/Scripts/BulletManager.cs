@@ -42,7 +42,7 @@ public class BulletManager : MonoBehaviour
         }
     }
 
-    // 生成子弹
+    // 生成子弹, 所有接口最终经过这里
     public void spawnBullet(Bullet type, Vector3 position, Quaternion rotation)
     {
         Bullet bulletInst = Instantiate(type);
@@ -51,7 +51,7 @@ public class BulletManager : MonoBehaviour
         bulletInst.transform.rotation = rotation;
     }
 
-    // 销毁子弹
+    // 销毁子弹, 所有接口最终经过这里
     public void removeBullet(Bullet bulletInst)
     {
         allBullets.Remove(bulletInst);

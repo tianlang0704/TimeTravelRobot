@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Bullet : TimeScaledGO
 {
+    // 子弹种类
     public enum BulletType
     {
-        Base = 1,
-        TimeSlow = 2
+        Base = 1, // 基础子弹
+        TimeSlow = 2 // 时间减慢子弹
     }
-    public float bulletSpeed = 0.5f;
+    public float bulletSpeed = 0.5f; // 子弹速度
 
     private GameLogicManager GameLogicManager;
 
@@ -25,6 +26,7 @@ public class Bullet : TimeScaledGO
     }
 
     protected virtual void Update() {
+        // 根据时间管理组件来计算子弹速度.
         float deltaTime;
         TimeScaledGO tgo = GetComponent<TimeScaledGO>();
         if (tgo != null) {

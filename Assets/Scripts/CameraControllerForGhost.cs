@@ -14,6 +14,7 @@ public class CameraControllerForGhost : CameraController
     // Start is called before the first frame update
     void Start()
     {
+        // 给幽灵的相机附上遮罩
         vignette.active = true;
         vignette.intensity.value = 0.5f;
     }
@@ -25,6 +26,7 @@ public class CameraControllerForGhost : CameraController
     }
 
     private void OnDestroy() {
+        // 相机随着幽灵销毁的时候, 取消遮罩
         vignette.active = false;
     }
 }
